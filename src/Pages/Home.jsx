@@ -1,40 +1,13 @@
-import { useEffect, useState } from "react"
-import React  from 'react'
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import axios from 'axios'
+import MultiActionAreaCard from '../Components/Card'
+import { Box, Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
 
-const Home = () => {
-    const [data, setData] = useEffect(null);
-
-
-    const useNavigate = useNavigate()
-    useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then((res) => {
-                console.log(res)
-                setData(res)
-            }).catch((err) => {
-                console.log(err);
-
-            })
-    } ,[])
-
+function Home() {
   return (
     <>
-    <h1 className='text-center'>Hello students</h1>
-    {
-      data ? data.map((item)=>{
-        return <div key={item.id} style={{
-          border: "1px solid black",
-          margin: "20px",
-          padding: "20px"
-        }}>
-          <h3>{item.name}</h3>
-          <p>{item.username}</p>
-          <button onClick={()=> singleUser(item)}>show more</button>
-        </div>
-      }): <h1>Loading..</h1>
-    }
+    <Typography className='text-center mt-4' variant='h4'>Home </Typography>
     </>
   )
 }
